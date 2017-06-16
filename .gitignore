@@ -195,3 +195,7 @@ RemoteSystemsTempFiles/.project
 .metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.indexes/properties.index
 .metadata/.mylyn/repositories.xml.zip
 .metadata/.lock
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.pde.api.tools.prefs
+.metadata/.plugins/org.eclipse.core.resources/.history/dc/e029df5e595200171f33f529c87f9b4e
+.metadata/.plugins/org.eclipse.wst.jsdt.core/externalLibsTimeStamps
+.metadata/.plugins/org.eclipse.core.resources/.history/5c/6094f47c595200171f33f529c87f9b4e
