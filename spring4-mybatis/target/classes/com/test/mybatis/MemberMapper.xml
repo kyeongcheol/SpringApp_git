@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberMapper에서 정의된 메서드 이름을 id값으로 받아옴 -->
+<mapper namespace="com.test.mybatis.MemberMapper">
+
+<resultMap type="Member" id="MemberResultMap">
+ <result property="_name" column="name"/>
+ <result property="_email" column="email" />
+ <result property="_phone" column="phone" />
+</resultMap>
+
+<select id="getMembers" resultMap="MemberResultMap">
+ select * from tab_mybatis_ykc
+</select>
+
+<!-- parameterType에는 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래스명이나 별칭이 들어간다 -->
+<insert id="insertMember" parameterType="com.test.mybatis.Member">
+insert into tab_mybatis_ykc	values(#{_name}, #{_email}, #{_phone})
+</insert>
+
+<update id="">
+</update>
+	
+<delete id="deleteMember" parameterType="com.test.mybatis.Member">
+delete tab_mybatis_ykc where(name=#{_name})
+</delete>
+	
+</mapper>
