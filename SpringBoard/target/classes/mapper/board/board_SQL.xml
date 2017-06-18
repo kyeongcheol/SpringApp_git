@@ -49,4 +49,19 @@
          )
     ]]>
 </insert>
+
+<update id="updateBoard" parameterType="hashmap">
+<![CDATA[
+
+  UPDATE SBoard2_yang
+  SET 
+      SUBJECT = #{SUBJECT},
+      NAME = #{NAME},
+      PASSWORD = #{PASSWORD},
+      CONTENT = #{CONTENT}
+  WHERE 
+      NO = #{NO}
+]]>
+
+</update>
 </mapper>

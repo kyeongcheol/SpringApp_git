@@ -10,7 +10,7 @@
 function locationURL()
 {
   if(window.name=='modify')
-	  window.opener.parent.location.href='modifyForm.action?NO=${password.NO}';
+	  window.opener.parent.location.href='modifyForm.action?NO=${NO}';
 
   else if(window.name=='delete')
   {

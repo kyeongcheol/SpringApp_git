@@ -42,5 +42,10 @@ public class BoardDAO extends AbstractDAO
 	{
 		return (Map<String, Object>)selectOne("board.selectPassword", map);
 	}
+	
+	public void updateBoard(Map<String, Object> map) throws Exception
+	{
+		update("board.updateBoard", map);
+	}
 
 }

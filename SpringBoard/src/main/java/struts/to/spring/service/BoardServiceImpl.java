@@ -35,12 +35,23 @@ public class BoardServiceImpl implements BoardService
 		return view;
 	}
 
+	//비밀번호 check
 	@Override
 	public Map<String, Object> selectPassword(Map<String, Object> map) 
 	throws Exception 
 	{
 		return boardDAO.selectPassword(map);
 	}
+
+	//게시글 수정
+	@Override
+	public void updateBoard(Map<String, Object> map) throws Exception 
+	{
+		boardDAO.updateBoard(map);
+		
+	}
+	
+	
 	
 	
 	

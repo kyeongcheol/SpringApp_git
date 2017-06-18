@@ -58,6 +58,7 @@ public class BoardController
 	{
 		ModelAndView mav = new ModelAndView("/board/checkPassword");
         mav.addObject("NO", bcm.get("NO"));
+        mav.addObject("PASSWORD", bcm.get("PASSWORD"));
 		return mav;
 	}
 	
@@ -76,9 +77,33 @@ public class BoardController
 			return mav;
 		}
 
-		   mav.addObject("password", password);
+		   mav.addObject("NO", password.get("NO"));
 		   mav.setViewName("/board/checkSuccess");		   
 		   return mav;
+	}
+	
+	//게시글 수정 폼
+	@RequestMapping(value="/board/modifyForm")
+	public ModelAndView updateBoardForm(BoardCommonMap bcm) throws Exception
+	{
+		ModelAndView mav = new ModelAndView("/board/boardModify");
+		
+		Map<String, Object> view = boardService.selectBoardView(bcm.getMap());
+		mav.addObject("view", view);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/board/modifyAction")
+	public ModelAndView updateBoardAction(BoardCommonMap bcm) throws Exception
+	{
+		ModelAndView mav = new ModelAndView("redirect:/board/viewAction.action");
+		
+		boardService.updateBoard(bcm.getMap());
+		
+		mav.addObject("NO", bcm.get("NO"));
+		
+		return mav;
 	}
 
 }

@@ -17,5 +17,6 @@ public interface BoardService
     Map<String, Object> selectPassword(Map<String, Object> map)
     throws Exception;
     	    
-	
+	//게시글 수정
+    void updateBoard(Map<String, Object> map) throws Exception;
 }
