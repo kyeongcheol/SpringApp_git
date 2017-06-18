@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>댓글처리예제</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+window.onload = function()
+{
+  loadCommentList();
+}
+
+function loadCommentList()
+{
+  new ajax.xhr.Request("commentlist.jsp", "", loadCommentResult, 'GET');	
+}
+
+function loadCommentList()
+{
+  //readyState : 요구의 상태값 검사
+  //4 -> complete
+  if(req.readyState == 4)
+  {
+	 if(req.status == 200)
+	 {
+		var xmlDoc = req.responseXML;
+		var code = xmlDoc.getElementsByTagName("code").item(0).firstChild.nodeValue;
+		
+		if(code == "success")
+		{
+			var commentList = eval( "(" + xmlDoc.getElementsByTagName("data").item(0).firstChild.nodeValue + ")" );
+			var listDiv = document.getElementById("commentList");
+						
+			for(var i = 0; i<commentList.length; i++)
+		    {
+				var commentDiv = makeCommentView(commentList[i]);
+				listDiv.appendChild(commentDiv);
+			}
+		} // end of if
+	 }
+  }
+}
+
+function makeCommentView(comment)
+{
+	//div 태그의 요소 생성하여 객체에 넣어줌
+	var commentDiv = document.createElement("div");
+    //div id, 속성값 setting
+	commentDiv.setAttribute("id", "c" + comment.id);
+    var html = '<strong>' + comment.name + '</strong><br/>' +
+           comment.content.replace(/\n/g, '\n<br/>') + '</br>' +
+           'onclick="viewUpdateForm('+comment.id+')"/>' +
+           '<input type="button" value="삭제" onclick="confirmDeletion('+comment.id+')"/>';
+           
+           //innerHTML : 태그 사이에 원하는 값을 넣기 위함
+           commentDiv.innerHTML = html;
+           commentDiv.comment = comment;
+           commentDiv.className = "comment";
+           return commentDiv;
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
