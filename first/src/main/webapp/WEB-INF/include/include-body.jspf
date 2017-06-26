@@ -1,5 +1,2 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<!-- common.js에 있는 submit 기능을 위한 숨김 폼 == commonForm -->
+<%@ page pageEncoding="utf-8"%>
 <form id="commonForm" name="commonForm"></form>
