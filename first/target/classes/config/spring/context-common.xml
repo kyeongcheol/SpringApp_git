@@ -16,6 +16,10 @@
         <property name="maxUploadSize" value="100000000" />
         <property name="maxInMemorySize" value="100000000" />
     </bean>
+    
+    <!-- jsonView -->
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+     
 </beans>
 
 

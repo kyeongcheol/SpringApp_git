@@ -27,19 +27,30 @@ public class SampleController
 	
 	//게시글 목록
 	@RequestMapping(value="/sample/openBoardList.do")
-	public ModelAndView openSampleBoardList(CommandMap commandMap) throws Exception
+	public ModelAndView openBoardList(CommandMap commandMap) throws Exception
 	{
-		//화면에 보여줄 view name
-		ModelAndView mv = new ModelAndView("/sample/boardList");
-		
-	    //게시판 목록 
-		List<Map<String, Object>> list = sampleService.selectBoardList
-				(commandMap.getMap());
-	
-		//서비스 클래스에서 처리한 selectBoardList 결과를 "list"라는 영역에 저장
-		mv.addObject("list", list);
-		
-		return mv;
+	    ModelAndView mv = new ModelAndView("/sample/boardList");
+	     
+	    return mv;
+	}
+	 
+	@RequestMapping(value="/sample/selectBoardList.do")
+	public ModelAndView selectBoardList(CommandMap commandMap) throws Exception
+	{
+	    ModelAndView mv = new ModelAndView("jsonView");
+	     
+	    List<Map<String,Object>> list = sampleService.selectBoardList(commandMap.getMap());
+	    mv.addObject("list", list);
+	    if(list.size() > 0)
+	    {
+	        mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+	    }
+	    else
+	    {
+	        mv.addObject("TOTAL", 0);
+	    }
+	     
+	    return mv;
 	}
 	
 	//게시글 상세보기

@@ -15,7 +15,7 @@ public class SampleDAO extends AbstractDAO
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception
 	{
 		//첫번째 파라미터 : 쿼리 이름, 두번째는 쿼리가 실행되는데 필요한 변수
-		return (List<Map<String, Object>>)selectList("sample.selectBoardList", map);
+		return (List<Map<String, Object>>)selectPagingList("sample.selectBoardList", map);
 	}
 	
 	//조회수 증가

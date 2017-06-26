@@ -91,6 +91,7 @@
 		{
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/sample/deleteBoard.do' />");
+			//키 : IDX , 값 : id가 "IDX"인 것
 			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			

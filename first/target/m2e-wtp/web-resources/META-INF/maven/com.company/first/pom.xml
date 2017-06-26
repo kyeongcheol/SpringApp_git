@@ -30,6 +30,7 @@
 			</snapshots>
 		</repository>
 		
+		<!-- 전자정부 프레임워크 repository -->
 		<repository>
 			<id>egovframe</id>
 			<url>http://www.egovframe.go.kr/maven/</url>
@@ -48,6 +49,7 @@
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.4.0</version>
 		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -237,6 +239,18 @@
 			<version>1.9.13</version>
 		</dependency>
 		
+		<dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-core</artifactId>
+         <version>2.6.4</version>
+        </dependency>
+ 
+       <dependency>
+       <groupId>com.fasterxml.jackson.core</groupId>
+       <artifactId>jackson-databind</artifactId>
+       <version>2.6.4</version>
+       </dependency>
+		
 		<!-- MultipartHttpServletRequset -->
 		<dependency>
             <groupId>commons-io</groupId>
@@ -257,13 +271,20 @@
 			<version>1.10</version>
 		</dependency>
 		
-		<!-- EgovProperty -->
+		<!-- 전자정부 프레임워크 -->
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.property</artifactId>  
 			<version>2.7.0</version>
 		</dependency>
 		
+		<!-- 전자정부 페이징 -->
+		<dependency>
+		    <groupId>egovframework.rte</groupId>
+		    <artifactId>egovframework.rte.ptl.mvc</artifactId>
+		    <version>3.5.0</version>
+        </dependency>
+        
 		<!-- Log4j -->
 		<dependency>
 			<groupId>log4j</groupId>

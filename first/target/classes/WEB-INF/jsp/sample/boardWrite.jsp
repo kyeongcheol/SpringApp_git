@@ -36,7 +36,8 @@
 	
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
-		$(document).ready(function(){
+		$(document).ready(function()
+		{
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
 				fn_openBoardList();
@@ -48,13 +49,20 @@
 			});
 		});
 		
-		function fn_openBoardList(){
+		function fn_openBoardList()
+		{
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_insertBoard(){
+		function fn_insertBoard()
+		{
+			/* 위에서 정의한 form id="frm"
+			comSubmit 객체는 객체가 생성할 때, 
+			1. 폼의 아이디가 frm인 것이 들어오면 폼을 전송하고
+			2. 파라미터가 없으면 숨겨둔 폼(commonForm)을 이용하여 데이터를 전송
+			*/
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/sample/insertBoard.do' />");
 			comSubmit.submit();

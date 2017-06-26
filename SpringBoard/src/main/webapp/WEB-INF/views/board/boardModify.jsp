@@ -42,7 +42,7 @@ function validation()
   </td>
   </tr>
  </table>
-  
+
   <form action="/spring/board/modifyAction.action" method="post">
   <input type="hidden" id="NO" name="NO" value="${view.NO}"/>
 
