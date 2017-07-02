@@ -9,13 +9,16 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-public class AbstractDAO {
+public class AbstractDAO 
+{
 	protected Log log = LogFactory.getLog(AbstractDAO.class);
 	
-	@Autowired
+	@Autowired //xml에 선언했던 의존관게를 자동으로 주입
 	private SqlSessionTemplate sqlSession;
 	
-	protected void printQueryId(String queryId) {
+	//console 로그를 남기기 위해 각각의 메서드 재정의
+	protected void printQueryId(String queryId) 
+	{
 		if(log.isDebugEnabled()){
 			log.debug("\t QueryId  \t:  " + queryId);
 		}

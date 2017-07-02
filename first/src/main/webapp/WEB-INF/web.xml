@@ -26,6 +26,7 @@
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
    
+    <!-- DispatcherServlet 설정 파일 등록 -->
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>

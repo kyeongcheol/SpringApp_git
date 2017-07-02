@@ -5,6 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
+  <%-- multipart/form-data : 파일 업로드 --%>
 	<form id="frm" name="frm" enctype="multipart/form-data">
 		<table class="board_view">
 			<colgroup>
@@ -24,24 +25,19 @@
 				</tr>
 			</tbody>
 		</table>
-		<div id="fileDiv">
-			<p>
-				<input type="file" id="file" name="file_0">
-				<a href="#this" class="btn" id="delete" name="delete">삭제</a>
-			</p>
-		</div>
 		
-		<br/><br/>
-		<a href="#this" class="btn" id="addFile">파일 추가</a>
+		<%--파일 업로드 추가 --%>
+		<input type="file" name="file">
+		<br/><br/>		
+		
 		<a href="#this" class="btn" id="write">작성하기</a>
 		<a href="#this" class="btn" id="list">목록으로</a>
 	</form>
 	
 	<%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script type="text/javascript">
-		var gfv_count = 1;
-	
-		$(document).ready(function(){
+		$(document).ready(function()
+		{
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
 				fn_openBoardList();
@@ -51,41 +47,25 @@
 				e.preventDefault();
 				fn_insertBoard();
 			});
-			
-			$("#addFile").on("click", function(e){ //파일 추가 버튼
-				e.preventDefault();
-				fn_addFile();
-			});
-			
-			$("a[name='delete']").on("click", function(e){ //삭제 버튼
-				e.preventDefault();
-				fn_deleteFile($(this));
-			});
 		});
 		
-		function fn_openBoardList(){
+		function fn_openBoardList()
+		{
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_insertBoard(){
+		function fn_insertBoard()
+		{
+			/* 위에서 정의한 form id="frm"
+			comSubmit 객체는 객체가 생성할 때, 
+			1. 폼의 아이디가 frm인 것이 들어오면 폼을 전송하고
+			2. 파라미터가 없으면 숨겨둔 폼(commonForm)을 이용하여 데이터를 전송
+			*/
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/sample/insertBoard.do' />");
 			comSubmit.submit();
-		}
-		
-		function fn_addFile(){
-			var str = "<p><input type='file' name='file_"+(gfv_count++)+"'><a href='#this' class='btn' name='delete'>삭제</a></p>";
-			$("#fileDiv").append(str);
-			$("a[name='delete']").on("click", function(e){ //삭제 버튼
-				e.preventDefault();
-				fn_deleteFile($(this));
-			});
-		}
-		
-		function fn_deleteFile(obj){
-			obj.parent().remove();
 		}
 	</script>
 </body>
